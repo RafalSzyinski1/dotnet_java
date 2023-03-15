@@ -12,9 +12,13 @@ namespace lab1
         {
             Console.WriteLine("Podaj liczbe przedmiontow: ");
             int n = int.Parse(Console.ReadLine());
-            Knapsack k = new Knapsack(n, 1);
+            Console.WriteLine("Podaj seed: ");
+            int s = int.Parse(Console.ReadLine());
+            Console.WriteLine("Podaj wielkosc plecaka: ");
+            int v = int.Parse(Console.ReadLine());
+            Knapsack k = new Knapsack(n, s);
             Console.WriteLine(k);
-            Console.WriteLine(k.run(30));
+            Console.WriteLine(k.run(v));
             Console.Read();
         }
     }
