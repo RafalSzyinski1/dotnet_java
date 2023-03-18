@@ -36,6 +36,7 @@ namespace Lab1_Knapsack
             str += "weight: " + act_weight.ToString();
             str += " value: " + value.ToString();
             str += " ratio: " + ratio.ToString();
+            str += "\nItems collected: " + items.Count.ToString();
             
             return str;
         }
