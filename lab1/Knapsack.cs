@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("TestKnapsack"), InternalsVisibleTo("KnapsackWindow")]
 
 namespace lab1
 {
@@ -53,12 +55,22 @@ namespace lab1
     {
         List<Item> items;
 
+        public Knapsack()
+        {
+            this.items = new List<Item>();
+        }
+
         public Knapsack(int number, int seed)
         {
             this.items = new List<Item>();
             Random random = new Random(seed);
             for (int i = 0; i < number; i++)
-                this.items.Add(new Item(random.Next(1, 10), random.Next(1, 10), i));
+                this.AddItem(new Item(random.Next(1, 10), random.Next(1, 10), i));
+        }
+
+        public void AddItem(Item item)
+        {
+            this.items.Add(item);
         }
 
         public KnapsackResult run(int volume)
@@ -70,10 +82,12 @@ namespace lab1
 
             foreach (Item item in this.items)
             {
-                sum_volume += item.GetWeight();
-                result.Add(item);
-                if (sum_volume >= volume)
+                int item_weight = item.GetWeight();
+                if (sum_volume + item_weight > volume)
                     break;
+                sum_volume += item_weight;
+                result.Add(item);
+                
             }
 
             return new KnapsackResult(result);
