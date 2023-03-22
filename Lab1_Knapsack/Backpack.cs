@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("Test_1")]
 
 namespace Lab1_Knapsack
 {
@@ -26,13 +28,9 @@ namespace Lab1_Knapsack
             {
                 str += item.ToString() + "\n";
             }
-            int value = 0;
-            float ratio = 0;
-            foreach (Item item in this.items)
-            {
-                value += item.GetValue();
-                ratio += item.GetRatio();
-            }
+            int value = this.GetValue();
+            float ratio = this.GetRatio();
+            
             str += "weight: " + act_weight.ToString();
             str += " value: " + value.ToString();
             str += " ratio: " + ratio.ToString();
@@ -41,5 +39,19 @@ namespace Lab1_Knapsack
             return str;
         }
 
+        public int GetValue()
+        {
+            int value = 0;
+            foreach (Item item in this.items)
+            {
+                value += item.GetValue();
+            }
+            return value;
+        }
+
+        public float GetRatio()
+        {
+            return (float)this.GetValue() / (float)act_weight;
+        } 
     }
 }

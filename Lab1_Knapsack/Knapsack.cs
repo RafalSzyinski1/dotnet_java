@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("Test_1")]
+
+
 
 namespace Lab1_Knapsack
 {
     
     internal class Knapsack
     {
-        public List<Item> items;
+        private List<Item> items;
 
         public Knapsack(int number, int seed)
         {
@@ -17,8 +22,24 @@ namespace Lab1_Knapsack
             Random random = new Random(seed);
             for(int i = 0; i < number; i++)
             {
-                this.items.Add(new Item(random.Next(1, 10), random.Next(1, 10)));
+                this.items.Add(new Item(random.Next(1, 10), random.Next(1, 10),this.items.Count));
             }
+            this.KnapsackSort();
+        }
+
+        public void AddRandom(int number, int seed)
+        {
+            Random random = new Random(seed);
+            for (int i = 0; i < number; i++)
+            {
+                this.items.Add(new Item(random.Next(1, 10), random.Next(1, 10), this.items.Count));
+            }
+            this.KnapsackSort();
+        }
+
+        public void AddItem(int weight, int value)
+        {
+            this.items.Add(new Item(weight,value, this.items.Count));
             this.KnapsackSort();
         }
 
@@ -66,6 +87,11 @@ namespace Lab1_Knapsack
                 }
                 if (backpack.act_weight == backpack.max_weight) break;
             }
+        }
+
+        public int GetCount()
+        {
+            return this.items.Count;
         }
     }
 }

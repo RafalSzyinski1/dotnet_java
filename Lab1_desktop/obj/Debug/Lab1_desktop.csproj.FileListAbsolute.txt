@@ -1,0 +1,14 @@
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_desktop.exe.config
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_desktop.exe
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_desktop.pdb
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_Knapsack.exe
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_Knapsack.pdb
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\bin\Debug\Lab1_Knapsack.exe.config
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.AssemblyReference.cache
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.SuggestedBindingRedirects.cache
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.Properties.Resources.resources
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.GenerateResource.cache
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.CoreCompileInputs.cache
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.CopyComplete
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.exe
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.pdb
