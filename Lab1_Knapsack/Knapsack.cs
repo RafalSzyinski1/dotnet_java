@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-[assembly: InternalsVisibleTo("Test_1")]
+[assembly: InternalsVisibleTo("Test_1"), InternalsVisibleTo("Lab1_desktop")]
 
 
 
@@ -48,7 +48,7 @@ namespace Lab1_Knapsack
             string str = "";
             foreach(Item item in this.items)
             {
-                str += item.ToString() + "\n";
+                str += item.ToString() + Environment.NewLine;
             }
             return str;
         }

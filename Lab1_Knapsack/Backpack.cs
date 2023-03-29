@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-[assembly: InternalsVisibleTo("Test_1")]
+[assembly: InternalsVisibleTo("Test_1"), InternalsVisibleTo("Lab1_desktop")]
 
 namespace Lab1_Knapsack
 {
@@ -26,7 +26,7 @@ namespace Lab1_Knapsack
             string str = "";
             foreach (Item item in this.items)
             {
-                str += item.ToString() + "\n";
+                str += item.ToString() + Environment.NewLine;
             }
             int value = this.GetValue();
             float ratio = this.GetRatio();
@@ -34,7 +34,7 @@ namespace Lab1_Knapsack
             str += "weight: " + act_weight.ToString();
             str += " value: " + value.ToString();
             str += " ratio: " + ratio.ToString();
-            str += "\nItems collected: " + items.Count.ToString();
+            str += Environment.NewLine + "Items collected: " + items.Count.ToString();
             
             return str;
         }

@@ -1,11 +1,5 @@
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\obj\Debug\Test_1.csproj.AssemblyReference.cache
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\obj\Debug\Test_1.csproj.CoreCompileInputs.cache
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.TestPlatform.AdapterUtilities.resources.dll
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
-E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Test_1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll

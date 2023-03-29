@@ -12,3 +12,4 @@ E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.csproj.CopyComplete
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.exe
 E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.pdb
+E:\6 sem\.NET JAVA\Lab1_Knapsack\dotnet_java\Lab1_desktop\obj\Debug\Lab1_desktop.Form1.resources
