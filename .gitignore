@@ -1,0 +1,10 @@
+﻿*/.vs
+/.vs
+/bin
+*/bin
+/obj
+*/obj
+/Properties
+*/Properties
+/packages
+*/packages
