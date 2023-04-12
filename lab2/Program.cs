@@ -9,11 +9,10 @@ namespace lab2
 {
     internal class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             BeerList a = new BeerList();
-            var b = a.getList().Result;
-            foreach (var item in b)
+            foreach (var item in a.DownloadBeers)
             {
                 Console.WriteLine(item);
             }

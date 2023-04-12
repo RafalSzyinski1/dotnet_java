@@ -8,13 +8,16 @@ namespace lab2
 {
     internal class Beer
     {
-        public string title { set; get; }
-        public string alchool { set; get; }
-        public string description { set; get; }
+        public int ID {set; get; }
+        public string Title { set; get; }
+        public string Alchool { set; get; }
+        public string Description { set; get; }
+
+        public string Country { set; get; }
 
         public override string ToString()
         {
-            return title;
+            return Title;
         }
 
     }

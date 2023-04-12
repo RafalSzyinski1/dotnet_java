@@ -5,19 +5,44 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Data.Entity.SqlServer;
+using System.Data.Entity;
 
 namespace lab2
 {
-    internal class BeerList
+    internal class BeerList : DbContext
     {
+        public virtual DbSet<Beer> Beers { set; get; }
+        public List<Beer> DownloadBeers { set; get; }
 
-        public async Task<List<Beer>> getList(string country = "")
+        public BeerList()
         {
-            var json = await getDataFromApi(country);
-            return JsonConvert.DeserializeObject<List<Beer>>(json);
+            this.DownloadBeers = this.GetList("").Result;
+        }
+        public BeerList(string country)
+        {
+            this.DownloadBeers = this.GetList(country).Result;
+        }
+        public async Task<List<Beer>> GetList(string country)
+        {
+            var beers = this.Beers.SqlQuery("SELECT * FROM Beers WHERE Country ='" + country + "'").ToList<Beer>();
+            if (beers.Count == 0)
+            {
+                var json = await this.GetDataFromApi(country);
+                var beers_json = JsonConvert.DeserializeObject<List<Beer>>(json);
+
+                foreach (var beer in beers_json)
+                {
+                    beer.Country = country;
+                    this.Beers.Add(beer);
+                }
+                this.SaveChanges();
+                return beers_json;
+            }
+            return beers;
         }
 
-        public async Task<string> getDataFromApi(string country = "")
+        public async Task<string> GetDataFromApi(string country = "")
         {
             var url = "https://beers-list.p.rapidapi.com/beers";
             if (!string.IsNullOrEmpty(country)) { url = url + "/" + country; }
