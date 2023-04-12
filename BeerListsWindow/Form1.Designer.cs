@@ -33,7 +33,7 @@
             this.show_box = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.beer_list = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -41,10 +41,11 @@
             // 
             this.gen_button.Location = new System.Drawing.Point(61, 310);
             this.gen_button.Name = "gen_button";
-            this.gen_button.Size = new System.Drawing.Size(75, 23);
+            this.gen_button.Size = new System.Drawing.Size(87, 35);
             this.gen_button.TabIndex = 0;
             this.gen_button.Text = "Generate";
             this.gen_button.UseVisualStyleBackColor = true;
+            this.gen_button.Click += new System.EventHandler(this.gen_button_Click);
             // 
             // country_list
             // 
@@ -102,14 +103,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Country";
             // 
-            // listBox1
+            // beer_list
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(231, 34);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(557, 404);
-            this.listBox1.TabIndex = 5;
+            this.beer_list.FormattingEnabled = true;
+            this.beer_list.ItemHeight = 16;
+            this.beer_list.Location = new System.Drawing.Point(231, 34);
+            this.beer_list.Name = "beer_list";
+            this.beer_list.Size = new System.Drawing.Size(557, 404);
+            this.beer_list.TabIndex = 5;
             // 
             // label3
             // 
@@ -127,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.beer_list);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.show_box);
@@ -147,7 +148,7 @@
         private System.Windows.Forms.CheckedListBox show_box;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox beer_list;
         private System.Windows.Forms.Label label3;
     }
 }

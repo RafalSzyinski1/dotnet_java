@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Data.Entity.SqlServer;
 using System.Data.Entity;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("BeerListsWindow")]
 
 namespace lab2
 {
@@ -17,11 +20,11 @@ namespace lab2
 
         public BeerList()
         {
-            this.DownloadBeers = this.GetList("").Result;
+            
         }
         public BeerList(string country)
         {
-            this.DownloadBeers = this.GetList(country).Result;
+            
         }
         public async Task<List<Beer>> GetList(string country)
         {
