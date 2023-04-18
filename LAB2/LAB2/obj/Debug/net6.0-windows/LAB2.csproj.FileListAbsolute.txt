@@ -63,3 +63,4 @@ E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\runtimes\
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.csproj.CopyComplete
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.Properties.Resources.resources

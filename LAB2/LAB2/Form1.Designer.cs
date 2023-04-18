@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
@@ -59,23 +60,26 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(10, 39);
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(10, 37);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(228, 274);
+            textBox1.Size = new Size(667, 29);
             textBox1.TabIndex = 2;
             // 
             // listBox1
             // 
             listBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listBox1.ForeColor = SystemColors.ActiveCaptionText;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(243, 39);
+            listBox1.Location = new Point(10, 70);
             listBox1.Margin = new Padding(3, 2, 3, 2);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(447, 274);
+            listBox1.Size = new Size(667, 244);
             listBox1.TabIndex = 3;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -101,6 +105,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(700, 338);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -108,9 +113,10 @@
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
             Controls.Add(button1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Piwo to moje paliwo";
             ResumeLayout(false);
             PerformLayout();
         }

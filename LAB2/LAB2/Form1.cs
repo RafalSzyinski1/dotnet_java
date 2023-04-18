@@ -30,20 +30,32 @@ namespace LAB2
             comboBox1.Items.Add("malta");
         }
 
+
         private async void button1_Click(object sender, EventArgs e)
         {
             string country = comboBox1.Text;
             bool country_downloaded = true;
-            var actbase = Base.Beers.ToList();
-            foreach (var beer in actbase)
+
+            if (country == "")
             {
-                if(beer.country == country)
-                {
-                    textBox1.Text = "Kraj ju¿ jest pobrany!";
-                    country_downloaded = false;
-                    break;
-                }
+                textBox1.Text = "Nie poda³eœ kraju!";
+                country_downloaded = false;
             }
+
+            if (country_downloaded)
+            {
+                foreach (var beer in Base.Beers)
+                {
+                    if (beer.country == country)
+                    {
+                        textBox1.Text = "Kraj ju¿ jest pobrany!";
+                        country_downloaded = false;
+                        break;
+                    }
+                }
+
+            }
+
 
             if (country_downloaded)
             {
@@ -62,9 +74,7 @@ namespace LAB2
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
-                    textBox1.Text = body;
                     List<Beer> json = JsonSerializer.Deserialize<List<Beer>>(body);
-
                     listBox1.Items.Clear();
                     foreach (Beer beer in json)
                     {
@@ -78,7 +88,13 @@ namespace LAB2
                     foreach (var x in piwko)
                         listBox1.Items.Add(x);
 
+
+
                 }
+
+                
+
+                textBox1.Text = "Lista Piw z kraju: " + country + " pobrana pomyœlnie!";
             }
 
         }
@@ -99,10 +115,10 @@ namespace LAB2
         private void button3_Click(object sender, EventArgs e)
         {
             string country = comboBox1.Text;
-            
-            foreach(var beer in Base.Beers.ToList())
+
+            foreach (var beer in Base.Beers)
             {
-                if(beer.country == country)
+                if (beer.country == country)
                 {
                     int a = beer.ID;
                     var s = Base.Beers.First(x => x.ID == a);
@@ -111,6 +127,11 @@ namespace LAB2
                 }
             }
             textBox1.Text = "Kraj wyczyszczony pomyœlnie";
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
