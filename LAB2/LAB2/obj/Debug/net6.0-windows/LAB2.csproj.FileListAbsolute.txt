@@ -1,0 +1,17 @@
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\LAB2.exe
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\LAB2.deps.json
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\LAB2.runtimeconfig.json
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\LAB2.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\LAB2.pdb
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.csproj.AssemblyReference.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.Form1.resources
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.csproj.GenerateResource.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.GeneratedMSBuildEditorConfig.editorconfig
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.AssemblyInfoInputs.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.AssemblyInfo.cs
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.csproj.CoreCompileInputs.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\refint\LAB2.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.pdb
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.genruntimeconfig.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\ref\LAB2.dll
