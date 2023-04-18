@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\LAB2.csproj": {}
+    "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\LAB2.csproj": {}
   },
   "projects": {
-    "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\LAB2.csproj": {
+    "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\LAB2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\LAB2.csproj",
+        "projectUniqueName": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\LAB2.csproj",
         "projectName": "LAB2",
-        "projectPath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\LAB2.csproj",
+        "projectPath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\LAB2.csproj",
         "packagesPath": "C:\\Users\\Alienware\\.nuget\\packages\\",
-        "outputPath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\obj\\",
+        "outputPath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

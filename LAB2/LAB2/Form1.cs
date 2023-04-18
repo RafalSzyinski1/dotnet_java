@@ -169,18 +169,20 @@ namespace LAB2
 
         private void music()
         {
-
-            var audioFile = @"E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\Resources\harnas.mp3";
-
-            using (var audioFileReader = new Mp3FileReader(audioFile))
-            using (var outputDevice = new WaveOutEvent())
+            while (music_play)
             {
-                outputDevice.Init(audioFileReader);
-                outputDevice.Play();
+                var audioFile = @"E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\Resources\peaches.mp3";
 
-                while (outputDevice.PlaybackState == PlaybackState.Playing && music_play)
+                using (var audioFileReader = new Mp3FileReader(audioFile))
+                using (var outputDevice = new WaveOutEvent())
                 {
-                    System.Threading.Thread.Sleep(1);
+                    outputDevice.Init(audioFileReader);
+                    outputDevice.Play();
+
+                    while (outputDevice.PlaybackState == PlaybackState.Playing && music_play)
+                    {
+                        System.Threading.Thread.Sleep(1);
+                    }
                 }
             }
         }
