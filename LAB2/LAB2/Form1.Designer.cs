@@ -61,10 +61,12 @@
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.BackColor = SystemColors.Window;
             textBox1.Location = new Point(10, 37);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(667, 29);
             textBox1.TabIndex = 2;
             // 
@@ -117,6 +119,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Piwo to moje paliwo";
+            FormClosing += Form1_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

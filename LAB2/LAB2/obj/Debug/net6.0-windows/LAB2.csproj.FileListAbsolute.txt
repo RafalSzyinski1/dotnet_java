@@ -64,3 +64,10 @@ E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\runtimes\
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.csproj.CopyComplete
 E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\obj\Debug\net6.0-windows\LAB2.Properties.Resources.resources
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.Asio.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.Core.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.Midi.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\bin\Debug\net6.0-windows\NAudio.WinMM.dll
