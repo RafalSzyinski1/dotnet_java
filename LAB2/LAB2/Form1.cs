@@ -11,8 +11,9 @@ namespace LAB2
     public partial class Form1 : Form
     {
         private BeerBase Base;
-        bool music_play = true;
+        bool app_is_running = true;
         Thread thread;
+        bool music_stop = false;
 
         public Form1()
         {
@@ -169,7 +170,7 @@ namespace LAB2
 
         private void music()
         {
-            while (music_play)
+            while (app_is_running)
             {
                 var audioFile = @"E:\6 sem\.NET JAVA\lab2\dotnet_java\LAB2\LAB2\Resources\peaches.mp3";
 
@@ -179,9 +180,16 @@ namespace LAB2
                     outputDevice.Init(audioFileReader);
                     outputDevice.Play();
 
-                    while (outputDevice.PlaybackState == PlaybackState.Playing && music_play)
+                    while (outputDevice.PlaybackState == PlaybackState.Playing && app_is_running)
                     {
                         System.Threading.Thread.Sleep(1);
+                        while (music_stop && app_is_running)
+                        {
+                            outputDevice.Pause();
+                            System.Threading.Thread.Sleep(100);
+                        }
+                        
+                        outputDevice.Play();
                     }
                 }
             }
@@ -195,9 +203,21 @@ namespace LAB2
             }
             else
             {
-                music_play = false;
+                app_is_running = false;
             }
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (music_stop)
+            {
+                music_stop = false;
+            }
+            else
+            {
+                music_stop = true;
+            }
         }
     }
 }
