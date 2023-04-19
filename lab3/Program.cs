@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace lab3
 {
@@ -11,38 +12,25 @@ namespace lab3
     {
         static void Main(string[] args)
         {
-            List<double> signalX = new List<double>();
-            List<double> signalY = new List<double>();
+            List<double> signal = new List<double>();
             for (double i = 0.0; i < 2 * Math.PI * 10; i += 0.5)
             {
-                signalX.Add(i);
-                signalY.Add(Math.Sin(i));
+                signal.Add(Math.Sin(i));
             }
 
-            for (int i = 0; i < signalX.Count; ++i)
+            using (StreamWriter writer = new StreamWriter("sig.csv"))
             {
-                Console.WriteLine(signalX[i]);
+                for (int i = 0; i < signal.Count; i++)
+                {
+                    writer.WriteLine($"{i}, {signal[i]}");
+                }
             }
-            Console.WriteLine();
-            for (int i = 0; i < signalY.Count; ++i)
-            {
-                Console.WriteLine(signalY[i]);
-            }
-            Console.WriteLine();
+       
 
             DFT dft = new DFT();
-            dft.Run(signalX, signalY);
+            dft.Run(signal);
+            dft.ToCSV("signal.csv");
 
-            for (int i = 0; i < dft.Re.Count; ++i)
-            {
-                Console.WriteLine(dft.Amp[i]);
-            }
-            Console.WriteLine();
-
-            for (int i = 0; i < dft.Re.Count; ++i)
-            {
-                Console.WriteLine(dft.Freq[i]);
-            }
             Console.ReadLine();
         }
     }

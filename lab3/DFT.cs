@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,9 +59,15 @@ namespace lab3
             }
         }
 
-        public void ToCSV()
+        public void ToCSV(string filename)
         {
-
+           using (StreamWriter writer = new StreamWriter(filename))
+            {
+                for (int i = 0; i < Freq.Count; ++i)
+                {
+                    writer.WriteLine($"{Freq[i]};{Amp[i]};{Phase[i]}");
+                }
+            }
         }
 
     }
