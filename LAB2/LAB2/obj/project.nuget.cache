@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q4zVlgGdf822zaWlR/WGTmrNamDmZ09I1R2a6wcPeMU66/MVNkCCaCAchXbIFcDt5JhED2xEVQanmKjBPNM8aQ==",
+  "dgSpecHash": "wHKW93dr7ezQOxuMZK2J04Md7e7RV86TAQATWk7QbP6nSYBiCGspaMXH9aIR+1H6DyXC6wJqVncVsfRXZR2Rgw==",
   "success": true,
-  "projectFilePath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\Lab2\\LAB2\\LAB2.csproj",
+  "projectFilePath": "E:\\6 sem\\.NET JAVA\\lab2\\dotnet_java\\LAB2\\LAB2\\LAB2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alienware\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Alienware\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.5\\microsoft.data.sqlite.core.7.0.5.nupkg.sha512",

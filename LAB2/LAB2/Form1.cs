@@ -89,7 +89,6 @@ namespace LAB2
                     listBox1.Items.Clear();
                     foreach (Beer beer in json)
                     {
-                        listBox1.Items.Add(beer);
                         beer.country = country;
                         Base.Add(beer);
                     }
