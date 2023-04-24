@@ -11,21 +11,24 @@ namespace lab3
     {
         object AssignForksLock;
         bool[] Forks;
-        List<Philosopher> Philosophers;
+        Philosopher[] Philosophers;
+        Thread[] Threads;
         int SizeOfPhilosophers;
         public Waiter(int sizeOfPhilosophers)
         {
             AssignForksLock = new object();
 
             Forks = new bool[sizeOfPhilosophers];
-            Philosophers = new List<Philosopher>();
+            Philosophers = new Philosopher[sizeOfPhilosophers];
             SizeOfPhilosophers = sizeOfPhilosophers;
+            Threads = new Thread[sizeOfPhilosophers];
 
             for (int i = 0; i < sizeOfPhilosophers; i++)
             {
                 Forks[i] = true;
-                Philosophers.Add(new Philosopher(this, i));
-                new Thread(Philosophers[i].Live).Start();
+                Philosophers[i] = new Philosopher(this, i);
+                Threads[i] = new Thread(Philosophers[i].Live);
+                Threads[i].Start();
             }
         }
 
@@ -61,6 +64,14 @@ namespace lab3
                 int right = num == SizeOfPhilosophers - 1 ? 0 : num + 1;
                 Forks[left] = true;
                 Forks[right] = true;
+            }
+        }
+
+        public void Join()
+        {
+            foreach (Thread T in Threads)
+            {
+                T.Join();
             }
         }
     }

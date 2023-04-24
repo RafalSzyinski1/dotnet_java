@@ -12,7 +12,8 @@ namespace lab3
     {
         static void Main(string[] args)
         {
-            Waiter waiter = new Waiter(30);
+            Waiter waiter = new Waiter(50);
+            waiter.Join();
             Console.WriteLine("END");
             Console.ReadLine();
         }
