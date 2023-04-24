@@ -9,23 +9,21 @@ namespace lab3
 {
     internal class Waiter
     {
-        object CheckForkLock;
         object AssignForksLock;
-        List<int> Forks;
+        bool[] Forks;
         List<Philosopher> Philosophers;
         int SizeOfPhilosophers;
         public Waiter(int sizeOfPhilosophers)
         {
-            CheckForkLock = new object();
             AssignForksLock = new object();
 
-            Forks = new List<int>();
+            Forks = new bool[sizeOfPhilosophers];
             Philosophers = new List<Philosopher>();
             SizeOfPhilosophers = sizeOfPhilosophers;
 
             for (int i = 0; i < sizeOfPhilosophers; i++)
             {
-                Forks.Add(i);
+                Forks[i] = true;
                 Philosophers.Add(new Philosopher(this, i));
                 new Thread(Philosophers[i].Live).Start();
             }
@@ -33,32 +31,22 @@ namespace lab3
 
         public void RequireForks(Philosopher philosopher)
         {
-            bool wait = true;
             int num = philosopher.GetNum();
             int left = num == 0 ? SizeOfPhilosophers - 1 : num - 1;
             int right = num == SizeOfPhilosophers - 1 ? 0 : num + 1;
 
-            while (tryLockForks(left, right))
+            while (TryLockForks(left, right))
                 Thread.Sleep(100);
         }
 
-        public bool tryLockForks (int fork1, int fork2)
+        public bool TryLockForks (int fork1, int fork2)
         {
-            int isFork1 = -1, isFork2 = -1;
             lock(AssignForksLock)
-            {
-                for (int i = 0; i < Forks.Count; ++i)
+            {   
+                if (Forks[fork1] && Forks[fork2])
                 {
-                    if (fork1 == Forks[i])
-                        isFork1 = i;
-                    if (fork2 == Forks[i])
-                        isFork2 = i;
-                }
-                
-                if (isFork1 != -1 &&  isFork2 != -1)
-                {
-                    Forks.RemoveAt(isFork1);
-                    Forks.RemoveAt(isFork2);
+                    Forks[fork1] = false;
+                    Forks[fork2] = false;
                     return true; // TEST
                 }
             }
@@ -71,8 +59,8 @@ namespace lab3
                 int num = philosopher.GetNum();
                 int left = num == 0 ? SizeOfPhilosophers - 1 : num - 1;
                 int right = num == SizeOfPhilosophers - 1 ? 0 : num + 1;
-                Forks.Add(left);
-                Forks.Add(right);
+                Forks[left] = true;
+                Forks[right] = true;
             }
         }
     }
