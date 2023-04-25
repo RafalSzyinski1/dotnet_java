@@ -6,3 +6,11 @@ E:\6 sem\SPD\Lab3_Marcin\Lab3_Marcin\bin\Debug\Lab3_Marcin.exe
 E:\6 sem\SPD\Lab3_Marcin\Lab3_Marcin\bin\Debug\Lab3_Marcin.pdb
 E:\6 sem\SPD\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.exe
 E:\6 sem\SPD\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.pdb
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\bin\Debug\Lab3_Marcin.exe.config
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\bin\Debug\Lab3_Marcin.exe
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\bin\Debug\Lab3_Marcin.pdb
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.csproj.AssemblyReference.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.csproj.SuggestedBindingRedirects.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.csproj.CoreCompileInputs.cache
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.exe
+E:\6 sem\.NET JAVA\lab2\dotnet_java\Lab3_Marcin\Lab3_Marcin\obj\Debug\Lab3_Marcin.pdb
