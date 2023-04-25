@@ -10,6 +10,9 @@ namespace Lab3_Marcin
 {
     internal class Program
     {
+        static object[] fork;
+        static object mutex = new object();
+
         static void Main(string[] args)
         {
             int num_of_phil;
@@ -27,20 +30,24 @@ namespace Lab3_Marcin
                 Console.ReadKey();
                 return;
             }
+            fork = new object[num_of_phil];
 
-            object[] fork = new object[num_of_phil];
-            object mutex = new object();
+            for(int i=0; i < num_of_phil; i++)
+            {
+                fork[i] = new object();
+            }
+
             Thread[] thread = new Thread[num_of_phil];
             Random rnd = new Random();
 
             for (int i=0; i < (num_of_phil-1); i++)
             {
-                object[] temp_1 = new object[] { i, fork[i], fork[i + 1], mutex, rnd.Next(200, 1000) };
+                object[] temp_1 = new object[] { i, i, i+1, rnd.Next(200, 1000) };
                 thread[i] = new Thread(new ThreadStart(() => philosopher(temp_1)));
                 thread[i].Start();
             }
             int id = num_of_phil - 1;
-            object[] temp_2 = new object[] { id, fork[id], fork[0], mutex, rnd.Next(200, 1000) };
+            object[] temp_2 = new object[] { id, id, 0, rnd.Next(200, 1000) };
             thread[id] = new Thread(new ThreadStart(() => philosopher(temp_2)));
             thread[id].Start();
 
@@ -64,10 +71,9 @@ namespace Lab3_Marcin
         {
             object[] MyParams = (object[])parameters;
             int id = (int)MyParams[0];
-            object left = MyParams[1];
-            object right = MyParams[2];
-            object mutex = MyParams[3];
-            int delay_time = (int)MyParams[4];
+            int left = (int)MyParams[1];
+            int right = (int)MyParams[2];
+            int delay_time = (int)MyParams[3];
             think(id,delay_time);
             bool hungry = true;
 
@@ -77,9 +83,9 @@ namespace Lab3_Marcin
                 Thread.Sleep(delay_time);
                 lock (mutex)
                 {
-                    lock(left)
+                    lock(fork[left])
                     {
-                        lock (right)
+                        lock (fork[right])
                         {
                             Console.WriteLine("Filozof " + id.ToString() + " je");
                             Thread.Sleep (delay_time);
