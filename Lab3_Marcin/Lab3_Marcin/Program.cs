@@ -12,6 +12,7 @@ namespace Lab3_Marcin
     {
         static object[] fork;
         static object mutex = new object();
+        static bool mutex_free = true;
 
         static void Main(string[] args)
         {
@@ -30,8 +31,8 @@ namespace Lab3_Marcin
                 Console.ReadKey();
                 return;
             }
-            fork = new object[num_of_phil];
 
+            fork = new object[num_of_phil];
             for(int i=0; i < num_of_phil; i++)
             {
                 fork[i] = new object();
@@ -42,14 +43,15 @@ namespace Lab3_Marcin
 
             for (int i=0; i < (num_of_phil-1); i++)
             {
-                object[] temp_1 = new object[] { i, i, i+1, rnd.Next(200, 1000) };
+                object[] temp_1 = new object[] { i, i+1, rnd.Next(100, 500) };
                 thread[i] = new Thread(new ThreadStart(() => philosopher(temp_1)));
-                thread[i].Start();
             }
             int id = num_of_phil - 1;
-            object[] temp_2 = new object[] { id, id, 0, rnd.Next(200, 1000) };
+            object[] temp_2 = new object[] { id, 0, rnd.Next(100, 500) };
             thread[id] = new Thread(new ThreadStart(() => philosopher(temp_2)));
-            thread[id].Start();
+
+            foreach (Thread thr in thread)
+                thr.Start();
 
 
 
@@ -71,51 +73,49 @@ namespace Lab3_Marcin
         {
             object[] MyParams = (object[])parameters;
             int id = (int)MyParams[0];
-            int left = (int)MyParams[1];
-            int right = (int)MyParams[2];
-            int delay_time = (int)MyParams[3];
+            int left = (int)MyParams[0];
+            int right = (int)MyParams[1];
+            int delay_time = (int)MyParams[2];
             think(id,delay_time);
             bool hungry = true;
 
             while(hungry)
             {
-                Console.WriteLine("Filozof " + id.ToString() + " jest głodny!");
-                Thread.Sleep(delay_time);
-                lock (mutex)
+                
+                bool lockTaken = false;
+                Monitor.TryEnter(mutex, ref lockTaken);
+                if (lockTaken)
                 {
-                    lock(fork[left])
+                    try
                     {
-                        lock (fork[right])
+                        lock (mutex)
                         {
-                            Console.WriteLine("Filozof " + id.ToString() + " je");
-                            Thread.Sleep (delay_time);
-                            hungry = false;
+                            lock (fork[left])
+                            {
+                                lock (fork[right])
+                                {
+                                    Console.WriteLine("Filozof " + id.ToString() + " je");
+                                    Thread.Sleep (delay_time);
+                                    hungry = false;
+                                }
+                            }
+                            Console.WriteLine("Filozof " + id.ToString() + " jest najedzony! :)");
                         }
-                    }                    
+                    }
+                    finally
+                    {
+                        Monitor.Exit(mutex);
+                    }
                 }
-                Console.WriteLine("Filozof " + id.ToString() + " jest najedzony! :)");
-
+                else
+                {
+                    Console.WriteLine("Filozof " + id.ToString() + " jest głodny!");
+                    Thread.Sleep(3*delay_time);
+                }
             }
             
 
         }
-
-        /*
-        void MyThreadFunction(object parameters)
-        {
-            object[] myParams = (object[])parameters;
-            int param1 = (int)myParams[0];
-            string param2 = (string)myParams[1];
-            bool param3 = (bool)myParams[2];
-            // Funkcja, którą chcemy uruchomić w nowym wątku
-        }
-
-        // ...
-
-        object[] myParams = new object[] { 42, "test", true };
-        Thread myThread = new Thread(new ThreadStart(() => MyThreadFunction(myParams)));
-        myThread.Start();
-        */
 
 
     }
