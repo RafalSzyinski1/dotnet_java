@@ -79,7 +79,44 @@ namespace Lab3_Marcin
             think(id,delay_time);
             bool hungry = true;
 
-            while(hungry)
+            while (hungry)
+            {
+                bool lockTaken1 = false;
+                Monitor.TryEnter(fork[left], ref lockTaken1);
+                if (lockTaken1)
+                {
+                    try
+                    {
+                        bool lockTaken2 = false;
+                        Monitor.TryEnter(fork[right], ref lockTaken2);
+                        if (lockTaken2)
+                        {
+                            try
+                            {
+                                Console.WriteLine("Filozof " + id.ToString() + " je");
+                                Thread.Sleep(delay_time);
+                                hungry = false;
+                            }
+                            finally
+                            {
+                                Console.WriteLine("Filozof " + id.ToString() + " jest najedzony! :)");
+                                Monitor.Exit(fork[right]);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        Monitor.Exit(fork[left]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Filozof " + id.ToString() + " jest głodny!");
+                    Thread.Sleep(3 * delay_time);
+                }
+            }
+
+            /*while(hungry)
             {
                 
                 bool lockTaken = false;
@@ -112,7 +149,8 @@ namespace Lab3_Marcin
                     Console.WriteLine("Filozof " + id.ToString() + " jest głodny!");
                     Thread.Sleep(3*delay_time);
                 }
-            }
+            
+            }*/
             
 
         }
