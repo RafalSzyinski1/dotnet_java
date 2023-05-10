@@ -16,7 +16,7 @@ namespace lab3
 
         public Philosopher(Waiter waiter, int numOfPhilosopher)
         {
-            Random rng = new Random();
+            Random rng = new Random(numOfPhilosopher);
             mThinkDelay = rng.Next() % 1000 + 500;
             mEatDelay = rng.Next() % 1000 + 500;
             mWaiter = waiter;
