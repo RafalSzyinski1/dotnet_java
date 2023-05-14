@@ -1,0 +1,50 @@
+﻿@page
+@model lab4.Pages.MyBeers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MyBeer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyBeer.ID" />
+            <div class="form-group">
+                <label asp-for="MyBeer.Title" class="control-label"></label>
+                <input asp-for="MyBeer.Title" class="form-control" />
+                <span asp-validation-for="MyBeer.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyBeer.Alchool" class="control-label"></label>
+                <input asp-for="MyBeer.Alchool" class="form-control" />
+                <span asp-validation-for="MyBeer.Alchool" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyBeer.Description" class="control-label"></label>
+                <input asp-for="MyBeer.Description" class="form-control" />
+                <span asp-validation-for="MyBeer.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyBeer.Country" class="control-label"></label>
+                <input asp-for="MyBeer.Country" class="form-control" />
+                <span asp-validation-for="MyBeer.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
