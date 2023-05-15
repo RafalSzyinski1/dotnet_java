@@ -1,0 +1,63 @@
+﻿@page
+@model lab4_2.Pages.MyBeers.AddModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Finding</h1>
+
+<h4>MyBeer</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Beers[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beers[0].Alchool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beers[0].Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Beers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alchool)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    <form method="post">
+                    <input type="hidden" asp-for="@item.ID" name="id" />
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                    </form>
+            
+                </td>
+            
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using lab4.Models;
-using System.Diagnostics.Metrics;
+using lab4_2.Models;
 using Newtonsoft.Json;
-using NuGet.Packaging;
 
-namespace lab4.Data
+namespace lab4_2.Data
 {
-    public class lab4Context : DbContext
+    public class lab4_2Context : DbContext
     {
-        public lab4Context (DbContextOptions<lab4Context> options)
+        public lab4_2Context (DbContextOptions<lab4_2Context> options)
             : base(options)
         {
+            InitAllBeers();
+        }
 
-            string[] countries = new string []{
+        public void InitAllBeers()
+        {
+            string[] countries = new string[]{
             "denmark",
             "sweden",
             "belgium",
@@ -39,16 +41,16 @@ namespace lab4.Data
 
         public async Task<int> InitBeers(string country)
         {
-            var beers = this.Beer.FromSqlRaw("SELECT TOP 1 * FROM Beer WHERE Country ='" + country + "'").ToList<lab4.Models.Beer>();
+            var beers = this.Beer.FromSqlRaw("SELECT TOP 1 * FROM Beer WHERE Country ='" + country + "'").ToList<lab4_2.Models.Beer>();
             if (beers.Count == 0)
             {
                 var json = await this.GetDataFromApi(country);
-                var beers_json = JsonConvert.DeserializeObject<List<lab4.Models.Beer>>(json);
-         
+                var beers_json = JsonConvert.DeserializeObject<List<lab4_2.Models.Beer>>(json);
+
                 foreach (var beer in beers_json)
                 {
                     beer.Country = country;
-                    this.Beer.Add(beer);         
+                    this.Beer.Add(beer);
                 }
                 this.SaveChanges();
                 return 2;
@@ -79,8 +81,8 @@ namespace lab4.Data
             }
         }
 
-        public virtual DbSet<lab4.Models.Beer> Beer { get; set; } = default!;
+        public DbSet<lab4_2.Models.Beer> Beer { get; set; } = default!;
 
-        public virtual DbSet<lab4.Models.MyBeer>? MyBeer { get; set; }
+        public DbSet<lab4_2.Models.MyBeer>? MyBeer { get; set; }
     }
 }

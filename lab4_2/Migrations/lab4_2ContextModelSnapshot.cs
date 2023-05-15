@@ -2,19 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using lab4.Data;
+using lab4_2.Data;
 
 #nullable disable
 
-namespace lab4.Migrations
+namespace lab4_2.Migrations
 {
-    [DbContext(typeof(lab4Context))]
-    [Migration("20230514201725_m2")]
-    partial class m2
+    [DbContext(typeof(lab4_2Context))]
+    partial class lab4_2ContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,7 +21,7 @@ namespace lab4.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("lab4.Models.Beer", b =>
+            modelBuilder.Entity("lab4_2.Models.Beer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -52,7 +50,7 @@ namespace lab4.Migrations
                     b.ToTable("Beer");
                 });
 
-            modelBuilder.Entity("lab4.Models.MyBeer", b =>
+            modelBuilder.Entity("lab4_2.Models.MyBeer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()

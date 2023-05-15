@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using lab4.Data;
+using lab4_2.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<lab4Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("lab4Context") ?? throw new InvalidOperationException("Connection string 'lab4Context' not found."), providerOptions => providerOptions.EnableRetryOnFailure()));
+builder.Services.AddDbContext<lab4_2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("lab4_2Context") ?? throw new InvalidOperationException("Connection string 'lab4_2Context' not found.")));
 
 var app = builder.Build();
 
