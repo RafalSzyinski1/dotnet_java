@@ -19,14 +19,37 @@ namespace lab4_2.Pages.MyBeers
             _context = context;
         }
 
-        public IList<MyBeer> MyBeer { get;set; } = default!;
+        public IList<lab4_2.Models.MyBeer> MyBeer { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public string TitleSort { get; set; }
+        public string CountrySort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.MyBeer != null)
+            TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            CountrySort = sortOrder == "Country" ? "country_desc" : "Country";
+
+            IQueryable < lab4_2.Models.MyBeer > query = from s in _context.MyBeer select s;
+
+            switch (sortOrder)
             {
-                MyBeer = await _context.MyBeer.ToListAsync();
+                case "name_desc":
+                    query = query.OrderByDescending(s => s.Title);
+                    break;
+                case "Country":
+                    query = query.OrderBy(s => s.Country);
+                    break;
+                case "country_desc":
+                    query = query.OrderByDescending(s => s.Country);
+                    break;
+                default:
+                    query = query.OrderBy(s => s.Title);
+                    break;
             }
+
+                MyBeer = await query.AsNoTracking().ToListAsync();   
+            
         }
     }
 }

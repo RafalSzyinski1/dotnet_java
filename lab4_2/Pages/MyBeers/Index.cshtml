@@ -2,19 +2,21 @@
 @model lab4_2.Pages.MyBeers.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "My Beers";
 }
 
-<h1>Index</h1>
+<h1>My Beers</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Add items</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
                 @Html.DisplayNameFor(model => model.MyBeer[0].Title)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MyBeer[0].Alchool)
@@ -23,7 +25,9 @@
                 @Html.DisplayNameFor(model => model.MyBeer[0].Description)
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CountrySort">
                 @Html.DisplayNameFor(model => model.MyBeer[0].Country)
+                </a>
             </th>
             <th></th>
         </tr>
