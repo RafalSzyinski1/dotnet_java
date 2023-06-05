@@ -5,8 +5,16 @@ public class Ball extends Entity implements Drawable {
     private double radius;
     private Color color;
 
-    public Ball(double radius, Color color) {
+    public Ball() {
+        this.radius = 0;
+        this.color = Color.WHITE;
+    }
+
+    public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    public void setColor(Color color) {
         this.color = color;
     }
 

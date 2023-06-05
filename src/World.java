@@ -1,19 +1,30 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class World extends JPanel {
     private static final int UPDATE_RATE = 60;
 
     private Box box;
-    private Ball ball;
+    private ArrayList<BouncingBall> balls;
 
     private DrawCanvas canvas;
 
     public World(int width, int height) {
-        ball = new Ball(20, Color.RED);
-        ball.setPosition(width / 2, height / 2);
-        ball.setSpeed(150, 150);
+        balls = new ArrayList<BouncingBall>();
+
+        Random rand = new Random();
+
+        for (int i = 0; i < 5; ++i) {
+            BouncingBall ball = new BouncingBall();
+
+            ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
+            balls.add(ball);
+
+        }
+
         box = new Box(0, 0, width, height);
 
         canvas = new DrawCanvas();
@@ -55,7 +66,8 @@ public class World extends JPanel {
     }
 
     public void gameUpdate(double dt) {
-        ball.update(dt);
+        for (Ball ball : balls)
+            ball.update(dt);
     }
 
     class DrawCanvas extends JPanel {
@@ -63,7 +75,8 @@ public class World extends JPanel {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             box.draw(g);
-            ball.draw(g);
+            for (Ball ball : balls)
+                ball.draw(g);
         }
 
         @Override

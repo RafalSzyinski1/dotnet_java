@@ -35,17 +35,31 @@ interface Drawable
 class BouncingBall extends Ball {
     +BouncingBall()
     +bounce(BouncingBall other)
-    +bounce(double[4] window)   
+    +bounce(Box window)   
 }
 
 class World extends JPanel {
-    -balls: Array<BouncingBall>
+    -box: Box
+    -balls: ArrayList<BouncingBall>
     +World()
-    +run()
-    +update()
-    +draw()
+    +runGame()
+    +updateGame()
 }
 
 World *-- BouncingBall
+World *-- Box
+
+class World.DrawCanvas extends JPanel {
+    +printComponents()
+    +getPreferredSize()
+}
+
+World.DrawCanvas --* World
+
+class Box extends Drawable {
+    +minX, minY, maxX, maxY
+    +Box(int x, int y, int width, int height)
+    +set(int x, int y, int width, int height)
+}
 
 @enduml
