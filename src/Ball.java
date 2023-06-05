@@ -1,5 +1,5 @@
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 
 public class Ball extends Entity implements Drawable {
     private double radius;
@@ -11,7 +11,7 @@ public class Ball extends Entity implements Drawable {
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(Graphics g) {
         double pos[] = getPosition();
         g.setColor(color);
         g.fillOval((int) (pos[0] - radius), (int) (pos[1] - radius), (int) (2 * radius), (int) (2 * radius));
