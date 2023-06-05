@@ -1,21 +1,9 @@
-
-/**
- * ---------------- Java 2D Graphics ---------------- 
- * Java 2D Bouncing Ball
- * This class creates the window.
- * Developed with Eclipse IDE
- * @author DannyWarp
- * 
- */
-
 import java.awt.BorderLayout;
-import java.awt.Image;
 import javax.swing.JFrame;
 
 public class Interface extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-
+	
 	public Interface() { // Constructor.
 
 		setSize(840, 500); // Setting window size.

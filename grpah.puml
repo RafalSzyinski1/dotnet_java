@@ -1,0 +1,51 @@
+@startuml bouncing_ball
+!define DARKBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+abstract Entity extends Position
+{
+    -vx: double
+    -vy: double
+    +Entity()
+    +getSpeed(): double[]
+    +setSpeed(double vx, double vy): void
+    +update(double dt): void
+}
+
+abstract Position
+{
+    -x: double
+    -y: double
+    +Position()
+    +getPosition(): double[]
+    +setPosition(double x, double y): void
+}
+
+class Ball extends Drawable, Entity {
+    -radius: double
+    -color: Color
+    +Ball(double radius, Color color)
+}
+
+interface Drawable
+{
+    +draw(Graphics g): void
+}
+
+class BouncingBall extends Ball {
+    +BouncingBall()
+    +bounce(BouncingBall other)
+    +bounce(double[4] window)   
+}
+
+class World extends JPanel {
+    -balls: Array<BouncingBall>
+    +World()
+    +run()
+    +update()
+    +draw()
+}
+
+World *-- BouncingBall
+
+@enduml
