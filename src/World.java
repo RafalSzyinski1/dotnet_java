@@ -19,15 +19,13 @@ public class World extends JPanel {
 
         box = new Box(0, 0, width, height);
 
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 10; ++i) {
             BouncingBall ball = new BouncingBall(box);
 
             ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
             balls.add(ball);
 
         }
-
-        
 
         canvas = new DrawCanvas();
         this.setLayout(new BorderLayout());
@@ -49,25 +47,28 @@ public class World extends JPanel {
 
         Thread gameThread = new Thread() {
             public void run() {
-                double TimePerFrame = 1000.0 / UPDATE_RATE;
-                double timeSinceLastUpdate = 0.0;
-                double lastTimeStamp = System.currentTimeMillis();
                 while (true) {
-                    double dt = System.currentTimeMillis() - lastTimeStamp;
-                    lastTimeStamp = System.currentTimeMillis();
-                    timeSinceLastUpdate += dt;
-                    while (timeSinceLastUpdate > TimePerFrame) {
-                        timeSinceLastUpdate -= TimePerFrame;
-                        gameUpdate(TimePerFrame / 1000);
-                    }
+                    long beginTimeMillis, timeTakenMillis, timeLeftMillis;
+                    beginTimeMillis = System.currentTimeMillis();
+
+                    gameUpdate(1.0 / UPDATE_RATE);
                     repaint();
+
+                    timeTakenMillis = System.currentTimeMillis() - beginTimeMillis;
+                    timeLeftMillis = 1000L / UPDATE_RATE - timeTakenMillis;
+                    if (timeLeftMillis < 5)
+                        timeLeftMillis = 5;
+                    try {
+                        Thread.sleep(timeLeftMillis);
+                    } catch (InterruptedException ex) {
+                    }
                 }
             }
         };
         gameThread.start();
     }
 
-    public void gameUpdate(double dt){
+    public void gameUpdate(double dt) {
         for (Ball ball : balls)
             ball.update(dt);
         int balls_size = balls.size();
@@ -75,14 +76,14 @@ public class World extends JPanel {
         Thread[] CheckOthers = new Thread[balls_size];
 
         int index = 0;
-        for (BouncingBall ball : balls){
-            CheckWall[index] = new Thread(()->ball.checkWall(box));
+        for (BouncingBall ball : balls) {
+            CheckWall[index] = new Thread(() -> ball.checkWall(box));
             CheckWall[index].start();
-            CheckOthers[index] = new Thread(()->ball.checkOthers(balls));
+            CheckOthers[index] = new Thread(() -> ball.checkOthers(balls));
             CheckOthers[index].start();
             index = index + 1;
         }
-        for (int i = 0; i < index; i++){
+        for (int i = 0; i < index; i++) {
             try {
                 CheckWall[i].join();
                 CheckOthers[i].join();
@@ -90,7 +91,6 @@ public class World extends JPanel {
                 e.printStackTrace();
             }
         }
-        
     }
 
     class DrawCanvas extends JPanel {
