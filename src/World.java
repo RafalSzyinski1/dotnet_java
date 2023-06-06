@@ -58,7 +58,7 @@ public class World extends JPanel {
                     timeSinceLastUpdate += dt;
                     while (timeSinceLastUpdate > TimePerFrame) {
                         timeSinceLastUpdate -= TimePerFrame;
-                        gameUpdate(TimePerFrame / 1000,box);
+                        gameUpdate(TimePerFrame / 1000);
                     }
                     repaint();
                 }
@@ -67,23 +67,28 @@ public class World extends JPanel {
         gameThread.start();
     }
 
-    public void gameUpdate(double dt, Box box){
+    public void gameUpdate(double dt){
         for (Ball ball : balls)
             ball.update(dt);
         int balls_size = balls.size();
         Thread[] CheckWall = new Thread[balls_size];
+        Thread[] CheckOthers = new Thread[balls_size];
+
         int index = 0;
         for (BouncingBall ball : balls){
             CheckWall[index] = new Thread(()->ball.checkWall(box));
-            CheckWall[index].start(); 
+            CheckWall[index].start();
+            CheckOthers[index] = new Thread(()->ball.checkOthers(balls));
+            CheckOthers[index].start();
+            index = index + 1;
         }
-        try {
-            for (Thread thr : CheckWall) {
-                thr.join();
+        for (int i = 0; i < index; i++){
+            try {
+                CheckWall[i].join();
+                CheckOthers[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        } catch (InterruptedException e) {
-            // Obsługa wyjątku InterruptedException
-            e.printStackTrace();
         }
         
     }

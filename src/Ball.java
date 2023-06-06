@@ -1,9 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Ball extends Entity implements Drawable {
     protected double radius;
     private Color color;
+    protected ReentrantLock lock = new ReentrantLock();
 
     public Ball() {
         this.radius = 0;
