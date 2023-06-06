@@ -17,15 +17,17 @@ public class World extends JPanel {
 
         Random rand = new Random();
 
+        box = new Box(0, 0, width, height);
+
         for (int i = 0; i < 5; ++i) {
-            BouncingBall ball = new BouncingBall();
+            BouncingBall ball = new BouncingBall(box);
 
             ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
             balls.add(ball);
 
         }
 
-        box = new Box(0, 0, width, height);
+        
 
         canvas = new DrawCanvas();
         this.setLayout(new BorderLayout());
@@ -56,7 +58,7 @@ public class World extends JPanel {
                     timeSinceLastUpdate += dt;
                     while (timeSinceLastUpdate > TimePerFrame) {
                         timeSinceLastUpdate -= TimePerFrame;
-                        gameUpdate(TimePerFrame / 1000);
+                        gameUpdate(TimePerFrame / 1000,box);
                     }
                     repaint();
                 }
@@ -65,9 +67,25 @@ public class World extends JPanel {
         gameThread.start();
     }
 
-    public void gameUpdate(double dt) {
+    public void gameUpdate(double dt, Box box){
         for (Ball ball : balls)
             ball.update(dt);
+        int balls_size = balls.size();
+        Thread[] CheckWall = new Thread[balls_size];
+        int index = 0;
+        for (BouncingBall ball : balls){
+            CheckWall[index] = new Thread(()->ball.checkWall(box));
+            CheckWall[index].start(); 
+        }
+        try {
+            for (Thread thr : CheckWall) {
+                thr.join();
+            }
+        } catch (InterruptedException e) {
+            // Obsługa wyjątku InterruptedException
+            e.printStackTrace();
+        }
+        
     }
 
     class DrawCanvas extends JPanel {

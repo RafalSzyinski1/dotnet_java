@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ball extends Entity implements Drawable {
-    private double radius;
+    protected double radius;
     private Color color;
 
     public Ball() {
