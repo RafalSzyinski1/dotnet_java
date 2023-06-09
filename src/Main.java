@@ -6,7 +6,7 @@ public class Main {
             public void run() {
                 JFrame frame = new JFrame("Bouncing Balls");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setContentPane(new World(640, 480));
+                frame.setContentPane(new World(1800, 900));
                 frame.pack();
                 frame.setVisible(true);
             }

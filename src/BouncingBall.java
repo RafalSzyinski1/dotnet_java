@@ -14,13 +14,14 @@ public class BouncingBall extends Ball {
     }
 
     public void checkWall(Box box) {
+        lock.lock();
         double act_pos[] = getPosition();
         double act_speed[] = getSpeed();
+        lock.unlock();
         double ballMinX = box.minX + radius;
         double ballMinY = box.minY + radius;
         double ballMaxX = box.maxX - radius;
         double ballMaxY = box.maxY - radius;
-        act_pos[0] += act_speed[0];
 
         if (act_pos[0] < ballMinX) {
             lock.lock();
@@ -45,16 +46,24 @@ public class BouncingBall extends Ball {
             setPosition(act_pos[0], act_pos[1]);
             lock.unlock();
         }
+
+        
+        act_pos[0] += act_speed[0];
+        act_pos[1] += act_speed[1];
     }
 
     public void checkOthers(ArrayList<BouncingBall> balls) {
+        lock.lock();
         double my_pos[] = getPosition();
         double my_radius = radius;
+        lock.unlock();
 
         for (Ball ball : balls) {
+            lock.lock();
             double his_pos[] = ball.getPosition();
             double his_speed[] = ball.getSpeed();
             double his_radius = ball.radius;
+            lock.unlock();
 
             if (my_pos == his_pos) {
                 continue;
@@ -65,6 +74,7 @@ public class BouncingBall extends Ball {
             if (distance < my_radius + his_radius) {
                 lock.lock();
                 ball.setSpeed(-his_speed[0], -his_speed[1]);
+                //ball.update(my_radius/60.0);
                 lock.unlock();
             }
         }

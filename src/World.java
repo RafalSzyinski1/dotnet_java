@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class World extends JPanel {
-    private static final int UPDATE_RATE = 60;
+    private static final int UPDATE_RATE = 1000;
 
     private Box box;
     private ArrayList<BouncingBall> balls;
@@ -19,7 +19,7 @@ public class World extends JPanel {
 
         box = new Box(0, 0, width, height);
 
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 40; ++i) {
             BouncingBall ball = new BouncingBall(box);
 
             ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
