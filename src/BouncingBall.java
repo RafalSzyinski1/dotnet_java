@@ -9,7 +9,7 @@ public class BouncingBall extends Ball {
 
         // Testing values
         setRadius(rand.nextInt(30));
-        setSpeed(rand.nextInt(10), rand.nextInt(10));
+        setSpeed(rand.nextInt(300), rand.nextInt(300));
         setColor(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
     }
 
@@ -46,15 +46,17 @@ public class BouncingBall extends Ball {
             setPosition(act_pos[0], act_pos[1]);
             lock.unlock();
         }
-
-        
+/*
+        lock.lock();
         act_pos[0] += act_speed[0];
         act_pos[1] += act_speed[1];
-    }
+        lock.unlock();
+    */  }
 
     public void checkOthers(ArrayList<BouncingBall> balls) {
         lock.lock();
         double my_pos[] = getPosition();
+        double my_speed[] = getSpeed();
         double my_radius = radius;
         lock.unlock();
 
@@ -70,8 +72,10 @@ public class BouncingBall extends Ball {
             }
 
             double distance = Math.sqrt(Math.pow(my_pos[0] - his_pos[0], 2) + Math.pow(my_pos[1] - his_pos[1], 2));
-
-            if (distance < my_radius + his_radius) {
+            if(distance < (my_radius + his_radius)*0.8){
+                ball.setPosition(his_pos[0]+3*his_speed[0], his_pos[1]+3*his_speed[1]);
+            }
+            else if (distance <= my_radius + his_radius) {
                 lock.lock();
                 ball.setSpeed(-his_speed[0], -his_speed[1]);
                 //ball.update(my_radius/60.0);
