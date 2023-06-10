@@ -20,7 +20,7 @@ public class World extends JPanel {
 
         box = new Box(0, 0, width, height);
 
-        for (int i = 0; i < 50; ++i) {
+        for (int i = 0; i < 30; ++i) {
             BouncingBall ball = new BouncingBall(box);
 
             ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
@@ -82,12 +82,12 @@ public class World extends JPanel {
             long beginTimeMillis, timeTakenMillis, timeLeftMillis;
                     beginTimeMillis = System.currentTimeMillis();
 
-                    lock.lock();
-                    ball.checkOthers(balls,dt);
-                    lock.unlock();
-                    lock.lock();
-                    ball.checkWall(box);
-                    lock.unlock();
+                    //lock.lock();
+                    checkOthers(ball,balls,dt);
+                    //lock.unlock();
+                    //lock.lock();
+                    checkWall(ball,box);
+                    //lock.unlock();
                     lock.lock();
                     ball.update(dt);
                     lock.unlock();
@@ -117,4 +117,80 @@ public class World extends JPanel {
             return (new Dimension(box.maxX - box.minX - 1, box.maxY - box.minY - 1));
         }
     }
+
+    public void checkOthers(BouncingBall main_ball, ArrayList<BouncingBall> balls,double dt) {
+        lock.lock();
+        double my_pos[] = main_ball.getPosition();
+        double my_speed[] = main_ball.getSpeed();
+        double my_radius = main_ball.radius;
+        lock.unlock();
+
+        for (Ball ball : balls) {
+            lock.lock();
+            double his_pos[] = ball.getPosition();
+            double his_speed[] = ball.getSpeed();
+            double his_radius = ball.radius;
+            lock.unlock();
+
+            if (my_pos == his_pos) {
+                continue;
+            }
+
+            double distance = Math.sqrt(Math.pow(my_pos[0] - his_pos[0], 2) + Math.pow(my_pos[1] - his_pos[1], 2));
+            if(distance < (my_radius + his_radius)*0.9){
+                lock.lock();
+                ball.setPosition(his_pos[0]+his_speed[0]*10*dt, his_pos[1]+his_speed[1]*10*dt);
+                lock.unlock();
+            }
+            else if (distance <= my_radius + his_radius) {
+                lock.lock();
+                ball.setSpeed(-his_speed[0], -his_speed[1]);
+                //ball.update(my_radius/60.0);
+                lock.unlock();
+                
+            }
+        }
+    }
+
+    public void checkWall(BouncingBall ball, Box box) {
+        lock.lock();
+        double act_pos[] = ball.getPosition();
+        double act_speed[] = ball.getSpeed();
+        lock.unlock();
+        double ballMinX = box.minX + ball.radius;
+        double ballMinY = box.minY + ball.radius;
+        double ballMaxX = box.maxX - ball.radius;
+        double ballMaxY = box.maxY - ball.radius;
+
+        if (act_pos[0] < ballMinX) {
+            lock.lock();
+            ball.setSpeed(-act_speed[0], act_speed[1]);
+            ball.setPosition(ballMinX, act_pos[1]);
+            lock.unlock();
+        } else if (act_pos[0] > ballMaxX) {
+            lock.lock();
+            ball.setSpeed(-act_speed[0], act_speed[1]);
+            ball.setPosition(ballMaxX, act_pos[1]);
+            lock.unlock();
+        }
+
+        if (act_pos[1] < ballMinY) {
+            lock.lock();
+            ball.setSpeed(act_speed[0], -act_speed[1]);
+            ball.setPosition(act_pos[0], act_pos[1]);
+            lock.unlock();
+        } else if (act_pos[1] > ballMaxY) {
+            lock.lock();
+            ball.setSpeed(act_speed[0], -act_speed[1]);
+            ball.setPosition(act_pos[0], act_pos[1]);
+            lock.unlock();
+        }
+/*
+        lock.lock();
+        act_pos[0] += act_speed[0];
+        act_pos[1] += act_speed[1];
+        lock.unlock();
+    */  }
+
+
 }

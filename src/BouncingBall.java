@@ -9,7 +9,7 @@ public class BouncingBall extends Ball {
 
         // Testing values
         setRadius(rand.nextInt(30));
-        setSpeed(rand.nextInt(300), rand.nextInt(300));
+        setSpeed(rand.nextInt(200), rand.nextInt(200));
         setColor(new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
     }
 
@@ -72,7 +72,7 @@ public class BouncingBall extends Ball {
             }
 
             double distance = Math.sqrt(Math.pow(my_pos[0] - his_pos[0], 2) + Math.pow(my_pos[1] - his_pos[1], 2));
-            if(distance < (my_radius + his_radius)*0.9){
+            if(distance < (my_radius + his_radius)*0.8){
                 ball.setPosition(his_pos[0]+his_speed[0]*dt, his_pos[1]+his_speed[1]*dt);
             }
             else if (distance <= my_radius + his_radius) {
