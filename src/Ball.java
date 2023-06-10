@@ -13,7 +13,14 @@ public class Ball extends Entity implements Drawable {
     }
 
     public void setRadius(double radius) {
-        this.radius = radius;
+        if(radius<10)
+        {
+            this.radius=10;
+        }
+        else
+        {
+            this.radius = radius;
+        }
     }
 
     public void setColor(Color color) {

@@ -22,4 +22,8 @@ abstract class Entity extends Position {
         double new_pos_y = pos[1] + speed[1] * dt;
         setPosition(new_pos_x, new_pos_y);
     }
+
+    public double getMoveAngle() {
+      return (double)Math.toDegrees(Math.atan2(-speed[1], speed[0]));
+   }
 }

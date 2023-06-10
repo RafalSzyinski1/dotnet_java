@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class World extends JPanel {
-    private static final int UPDATE_RATE = 100;
+    private static final int UPDATE_RATE = 200;
     protected ReentrantLock lock = new ReentrantLock();
     private Box box;
     private ArrayList<BouncingBall> balls;
@@ -20,7 +20,7 @@ public class World extends JPanel {
 
         box = new Box(0, 0, width, height);
 
-        for (int i = 0; i < 20; ++i) {
+        for (int i = 0; i < 50; ++i) {
             BouncingBall ball = new BouncingBall(box);
 
             ball.setPosition(rand.nextInt(width - 60) + 30, rand.nextInt(height - 60) + 30);
@@ -100,31 +100,6 @@ public class World extends JPanel {
                         Thread.sleep(timeLeftMillis);
                     } catch (InterruptedException ex) {
                     }
-        }
-    }
-
-    public void gameUpdate(double dt) {
-        for (Ball ball : balls)
-            ball.update(dt);
-        int balls_size = balls.size();
-        Thread[] CheckWall = new Thread[balls_size];
-        Thread[] CheckOthers = new Thread[balls_size];
-
-        int index = 0;
-        for (BouncingBall ball : balls) {
-            CheckWall[index] = new Thread(() -> ball.checkWall(box));
-            CheckWall[index].start();
-            CheckOthers[index] = new Thread(() -> ball.checkOthers(balls,dt));
-            CheckOthers[index].start();
-            index = index + 1;
-        }
-        for (int i = 0; i < index; i++) {
-            try {
-                CheckWall[i].join();
-                CheckOthers[i].join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 
