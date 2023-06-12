@@ -137,15 +137,17 @@ public class World extends JPanel {
             }
 
             double distance = Math.sqrt(Math.pow(my_pos[0] - his_pos[0], 2) + Math.pow(my_pos[1] - his_pos[1], 2));
-            if(distance < (my_radius + his_radius)*0.9){
+            // if (distance < (my_radius + his_radius) * 0.9) {
+            // lock.lock();
+            // ball.setSpeed(-my_speed[0], -my_speed[1]);
+            // ball.update(dt);
+            // lock.unlock();
+            // } else
+            if (distance <= my_radius + his_radius) {
                 lock.lock();
-                ball.setPosition(his_pos[0]+his_speed[0]*10*dt, his_pos[1]+his_speed[1]*10*dt);
-                lock.unlock();
-            }
-            else if (distance <= my_radius + his_radius) {
-                lock.lock();
-                ball.setSpeed(-his_speed[0], -his_speed[1]);
-                //ball.update(my_radius/60.0);
+                ball.setSpeed((his_pos[0] - my_pos[0]) / distance * 150,
+                        (his_pos[1] - my_pos[1]) / distance * 150);
+                // ball.update(my_radius/60.0);
                 lock.unlock();
                 
             }
